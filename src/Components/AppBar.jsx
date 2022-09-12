@@ -6,7 +6,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 const AppBar = () => {
+  const { loggedInUser } = useContext(UserContext);
+
   return (
     <div>
       <Navbar bg="secondary" variant="dark">
@@ -22,22 +26,30 @@ const AppBar = () => {
                 Movies
               </Nav.Link>
               <NavDropdown title="Theatres" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#pvr">PVR Cinema </NavDropdown.Item>
-                <NavDropdown.Item href="#inox">Inox</NavDropdown.Item>
-                <NavDropdown.Item href="rohini">
-                  Rohini Theatre
-                </NavDropdown.Item>
-                <NavDropdown.Item href="mayajaal">Mayajaal</NavDropdown.Item>
-                <NavDropdown.Item href="national">National Theatre</NavDropdown.Item>
-                <NavDropdown.Item href="palazoo">Palazoo</NavDropdown.Item>
-                <NavDropdown.Item href="luxe">Luxe</NavDropdown.Item>
+                <NavDropdown.Item href="/movie">PVR Cinema </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link as={Link} to="/history">
-                History
-              </Nav.Link>
-              <Nav.Link as={Link} to="/login">
-                Login
-              </Nav.Link>
+              {loggedInUser.isLoggedIn ? (
+                <>
+                  <Nav.Link as={Link} to="/history">
+                    History
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/login">
+                    Logout
+                  </Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link as={Link} to="/">
+                    Login
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/register">
+                    Register
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/admin">
+                    Admin
+                  </Nav.Link>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

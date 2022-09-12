@@ -1,29 +1,15 @@
-import React from "react";
-import { Col, Container, Row, Stack } from "react-bootstrap";
+import React, { useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import AppBar from "../Components/AppBar";
-import AppBody from "../Components/AppBody";
-import Movie from "../Components/Movie";
-
-import { movies } from "../data/dummy";
+import FooterComponent from "../Components/FooterComponent";
+import MovieComponent from "../Components/MovieComponent";
 
 const MoviesPage = () => {
   return (
     <div>
-      <AppBody>
-        <AppBar />
-        <Container>
-          <h3 className="fs-3 my-4">Movie</h3>
-          <Row>
-            {movies.map((movie, index) => {
-              return (
-                <Col xs={3}>
-                  <Movie image={movie.image} name={movie.name} />
-                </Col>
-              );
-            })}
-          </Row>
-        </Container>
-      </AppBody>
+      <AppBar />
+      <MovieComponent title={"MOVIES"} />
+      <FooterComponent />
     </div>
   );
 };
