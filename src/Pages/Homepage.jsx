@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AppBar from "../Components/AppBar";
 import FooterComponent from "../Components/FooterComponent";
-import MovieComponent from "../Components/MovieComponent";
+import MovieComponent from "../movie/MovieComponent";
 
 
 const HomePage = () => {

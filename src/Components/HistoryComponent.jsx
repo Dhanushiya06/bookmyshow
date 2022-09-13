@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Title from "./Title";
 
-const HistoryComponent = ({title}) => {
-const [movies, setMovies] = useState([]);
+const HistoryComponent = ({ title }) => {
+  const [movies, setMovies] = useState([]);
   return (
-    <div class="container mt-5">
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover">
+    <div className="container mt-5">
+      <div className="table-responsive">
+        <table className="table table-striped table-bordered table-hover">
           <thead>
-          <Title title={title} />
+            <Title title={title} />
             <tr>
               <th col="2">Name</th>
               <th>Theatre Name</th>
@@ -24,7 +24,7 @@ const [movies, setMovies] = useState([]);
               <tr key={index}>
                 <td col="2">{/* <h6>{theatre.theatreName}</h6> */}</td>
                 <td></td>
-                <td class="font-weight-bold">{movie.movieName}</td>
+                <td className="font-weight-bold">{movie.movieName}</td>
                 <td></td>
                 <td>{movie.price}</td>
                 <td>{movie.date}</td>

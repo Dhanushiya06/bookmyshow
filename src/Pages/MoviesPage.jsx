@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
 import AppBar from "../Components/AppBar";
 import FooterComponent from "../Components/FooterComponent";
-import MovieComponent from "../Components/MovieComponent";
+import MovieComponent from "../Components/movie/MovieComponent";
 
 const MoviesPage = () => {
   return (

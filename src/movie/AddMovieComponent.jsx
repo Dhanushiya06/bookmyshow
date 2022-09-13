@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
-import movieApi from "../api/movie";
+import movieApi from "../api/movieApi";
 import { useState } from "react";
 
 let INITIAL_ERROR = {
@@ -129,7 +129,7 @@ const AddMovieComponent = () => {
               </div>
               <div className="mb-3">
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   rows="3"
                   placeholder="description"
                   value={movie.description}

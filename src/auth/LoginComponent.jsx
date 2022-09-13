@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
-import movieApi from "../api/movie";
-
+import movieApi from "../api/movieApi";
 
 const LoginComponent = () => {
   const numberRegEx = /^[6-9]\d{9}$/gi;
@@ -26,7 +25,11 @@ const LoginComponent = () => {
           let loggedInUser = res.data.data;
           loggedInUser.isLoggedIn = true;
           setLoggedInUser(loggedInUser);
-          navigate("/");
+          if (loggedInUser.role === "ADMIN") {
+            navigate("/admin");
+          } else {
+            navigate("/");
+          }
         } else if (res.data.error) {
           console.log(res.data.error.message);
         } else {
@@ -48,7 +51,6 @@ const LoginComponent = () => {
             placeholder="User Name"
             value={login.name}
             onChange={(event) => {
-
               let name = event.target.value;
               if (name.length < 3 || nameRegExp.test(name) === false) {
                 setLoginError("Enter a valid name");
@@ -71,10 +73,9 @@ const LoginComponent = () => {
               } else {
                 setLoginError({
                   ...loginError,
-              
                 });
               }
-              setLogin({ ...login,password:event.target.value });
+              setLogin({ ...login, password: event.target.value });
             }}
           />
         </div>

@@ -2,8 +2,8 @@ import React from "react";
 import Lottie from "react-lottie";
 import animationData from "../assets/animations/9103-entertainment.json";
 import "../assets/style/login.css";
-import AuthComponent from "../Components/AuthComponent";
-import LoginComponent from "../Components/LoginComponent";
+import AuthComponent from "../auth/AuthComponent";
+import LoginComponent from "../auth/LoginComponent";
 
 const LoginPage = ({children}) => {
   const defaultOptions = {

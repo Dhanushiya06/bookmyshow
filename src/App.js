@@ -9,8 +9,8 @@ import RegisterPage from "./Pages/RegisterPage";
 import TicketPage from "./Pages/TicketPage";
 import SummaryPage from "./Pages/SummaryPage";
 import AdminPage from "./Pages/AdminPage";
-import AddTheatreComponent from "./Components/AddTheatreComponent";
-import AddMovieComponent from "./Components/AddMovieComponent";
+import AddTheatreComponent from "./Components/theatre/AddTheatreComponent";
+import AddMovieComponent from "./movie/AddMovieComponent";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import { UserContext } from "./context/UserContext";
 

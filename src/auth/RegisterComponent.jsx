@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import movieApi from "../api/movie";
+import movieApi from "../api/movieApi";
 
 const RegisterComponent = () => {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import HomeBody from "./HomeBody";
-import Movie from "./Movie";
+import HomeBody from "../HomeBody";
+import MovieItem from "./MovieItem";
 import { Col } from "react-bootstrap";
-import movieApi from "../api/movie";
+import movieApi from "../../api/movieApi";
 
 const MovieComponent = ({ title }) => {
   const [movies, setMovies] = useState([]);
@@ -32,13 +32,14 @@ const MovieComponent = ({ title }) => {
         movies.map((movie, index) => {
           return (
             <Col xs={3} key={index}>
-              <Movie
+              <MovieItem
                 image={movie.image}
                 name={movie.movieName}
                 desc={movie.description}
-                movie={movie.movieId}
+                movieId={movie.movieId}
                 date={movie.date}
                 price={movie.price}
+                theatreId={movie.theatreId}
               />
             </Col>
           );

@@ -4,8 +4,8 @@ import Lottie from "react-lottie";
 import animationData from "../assets/animations/9103-entertainment.json";
 
 import "../assets/style/login.css";
-import AuthComponent from "../Components/AuthComponent";
-import RegisterComponent from "../Components/RegisterComponent";
+import AuthComponent from "../auth/AuthComponent";
+import RegisterComponent from "../auth/RegisterComponent";
 
 const RegisterPage = () => {
   const defaultOptions = {
