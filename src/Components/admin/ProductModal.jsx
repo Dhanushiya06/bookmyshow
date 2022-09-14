@@ -5,9 +5,10 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import bookartApi from "../../api/api";
+import movieApi from "../../api/movieApi";
 
 const ProductModal = ({ open, setOpen }) => {
-  const [categories, setCategories] = useState([]);
+  const [movies,setMovies] = useState([]);
   const [book, setBook] = useState({
     bookName: "",
     authorName: "",
@@ -43,16 +44,16 @@ const ProductModal = ({ open, setOpen }) => {
   };
 
   useEffect(() => {
-    bookartApi
-      .get("/category/all")
+    movieApi
+      .get("/movie/all")
       .then(
         (response) => {
           let data = response.data;
           if (data.data) {
             console.log(data.data);
-            setCategories(data.data);
-            console.log({ ...book, categoryId: data.data[0].id });
-            setBook({ ...book, categoryId: data.data[0].id });
+            setMovies(data.data);
+          //   console.log({ ...book, categoryId: data.data[0].id });
+          //  setBook({ ...book, categoryId: data.data[0].id });
           } else if (data.error) {
             console.log(data.error.message);
           }

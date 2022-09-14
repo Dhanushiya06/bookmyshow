@@ -40,11 +40,11 @@ const AppBar = () => {
         <Container>
           {loggedInUser.role === "ADMIN" ? (
             <Navbar.Brand as={Link} to="/admin">
-              SHIYAA SHOW!!
+              SHIYAA SHOWS!!
             </Navbar.Brand>
           ) : (
             <Navbar.Brand as={Link} to="/">
-              SHIYAA SHOW!!
+              SHIYAA SHOWS!!
             </Navbar.Brand>
           )}
 
@@ -52,7 +52,7 @@ const AppBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto"></Nav>
             <Nav>
-              {loggedInUser.role !== "ADMIN" ? (
+              {/* {loggedInUser.role !== "ADMIN" ? (
                 <NavDropdown title="Theatres" id="basic-nav-dropdown">
                   <>
                     {theatres.map((theatre) => (
@@ -62,7 +62,7 @@ const AppBar = () => {
                     ))}
                   </>
                 </NavDropdown>
-              ) : null}
+              ) : null} */}
 
               {loggedInUser.isLoggedIn ? (
                 <>

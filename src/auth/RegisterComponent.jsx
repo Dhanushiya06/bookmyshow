@@ -66,6 +66,7 @@ const RegisterComponent = () => {
               }}
             />
           </div>
+        
           <button
             type="submit"
             className="btn btn-primary"

@@ -12,8 +12,13 @@ const MovieItem = ({ image, name, desc, movieId, theatreId, price }) => {
 
   return (
     <div>
-      <Card className="text-dark rounded my-2">
-        <Card.Img variant="top" src={image} className="fitToContent" />
+      <Card className="text-dark rounded my-2" key={movieId}>
+        {/* {`data:image/jpeg;base64,${image}`} */}
+        <Card.Img
+          variant="top"
+          src={`data:image/jpeg;base64,${image}`}
+          className="fitToContent"
+        />
         <Card.Body>
           <Card.Title className="fs-5 text-center mb-3">{name}</Card.Title>
           <Card.Text>{desc}</Card.Text>
@@ -27,7 +32,8 @@ const MovieItem = ({ image, name, desc, movieId, theatreId, price }) => {
                 userId: loggedInUser.userId,
                 movieId: movieId,
                 theatreId: theatreId,
-                price: price
+                price: price,
+                name: name,
               });
               navigate("/tickets");
             }}

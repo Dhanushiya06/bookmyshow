@@ -5,9 +5,10 @@ import Lottie from "react-lottie";
 import animationData from "../assets/animations/9103-entertainment.json";
 import FooterComponent from "../Components/FooterComponent";
 import { UserContext } from "../context/UserContext";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const TicketPage = () => {
+  const navigate = useNavigate();
   const [selected, setSelected] = useState(10);
   const { booking, setBooking } = useContext(UserContext);
 
@@ -26,7 +27,7 @@ const TicketPage = () => {
   const bookingApi = (e) => {
     e.preventDefault();
     setBooking({ ...booking, tickets: selected });
-    Navigate("/summary");
+    navigate("/summary");
   };
 
   return (
@@ -36,7 +37,9 @@ const TicketPage = () => {
         <div className="pb-5">
           <Lottie options={defaultOptions} height={400} width={400} />
         </div>
-        <h2>TICKETS</h2>
+        <h2>
+          <b>TICKETS</b>
+        </h2>
         <ul className="rating">
           {Array.from({ length: 10 }, (_, i) => (
             <li key={`rating-${i + 1}`}>
@@ -54,7 +57,7 @@ const TicketPage = () => {
         </ul>
         <div>
           <p>Movie Name:{booking.name}</p>
-          <p>Price: Rs.{booking.price}</p>
+          <p>Price: Rs.{selected * booking.price}</p>
         </div>
         <button
           className="btn btn-secondary w-100"

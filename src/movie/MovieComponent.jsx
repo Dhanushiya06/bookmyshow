@@ -32,12 +32,13 @@ const MovieComponent = ({ title }) => {
           return (
             <Col xs={3} key={index}>
               <MovieItem
-                image={movie.image}
+                image={movie.file.image}
                 name={movie.movieName}
                 desc={movie.description}
-                movie={movie.movieId}
+                movieId={movie.movieId}
                 date={movie.date}
                 price={movie.price}
+                theatreId={movie.theatreId}
               />
             </Col>
           );

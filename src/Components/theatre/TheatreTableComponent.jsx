@@ -53,7 +53,7 @@ const TheatreTableComponent = () => {
             <th>Theatre</th>
             <th>Movie</th>
             <th>Tickets</th>
-            <th>Action</th>
+           <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -74,7 +74,7 @@ const TheatreTableComponent = () => {
                   <button className="btn bg-success text-white btn-sm mx-1">
                     Edit
                   </button>
-                </Link>
+                </Link> 
                 <button
                   className="btn bg-danger text-white btn-sm mx-1"
                   onClick={(event) => deleteAPI(event, theatre.theatreId)}

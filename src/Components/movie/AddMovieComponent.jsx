@@ -5,29 +5,49 @@ import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import movieApi from "../../api/movieApi";
+import AppBar from "../AppBar";
 
-let INITIAL_ERROR = {
-  movieName: "",
-  price: "",
-  description: "",
-  image: "",
-  date: "",
-};
+import movieApi from "../../api/movieApi";
 
 let INITIAL_VALUE = {
   movieName: "",
   price: "",
   description: "",
-  image: "",
+  fileId: 0,
   date: "",
+  theatreId: 25,
+  availableTickets: 50,
 };
 
 const AddMovieComponent = () => {
   const [movie, setMovie] = useState(INITIAL_VALUE);
-  const [movieError, setMovieError] = useState(INITIAL_ERROR);
+  const [movieError, setMovieError] = useState(INITIAL_VALUE);
 
   const navigate = useNavigate();
+
+  const uploadFile = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    console.log(event.target.files[0]);
+    formData.append("file", event.target.files[0]);
+    axios
+      .post("http://localhost:8080/api/uploadFile", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then(
+        (response) => {
+          let data = response.data;
+          if (data.data) {
+            setMovie({ ...movie, fileId: data.data.id });
+          } else if (data.error) {
+            console.log(data.error.message);
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
 
   const addAPI = (event, id) => {
     event.preventDefault();
@@ -50,6 +70,7 @@ const AddMovieComponent = () => {
 
   return (
     <div>
+      <AppBar/>
       <Container className="my-5">
         <Row>
           <Col xs={2}></Col>
@@ -109,7 +130,6 @@ const AddMovieComponent = () => {
                   type="number"
                   className="form-control"
                   placeholder="ticketId"
-                  value={}
                   onChange={(event) => {
                     let mPrice = event.target.value;
                     if (parseInt(mPrice) > 99) {
@@ -177,7 +197,14 @@ const AddMovieComponent = () => {
                 <label className="text-danger">{movieError.description}</label>
               </div>
               <div className="mb-3">
-                <input className="form-control" type="file" id="formFile" />
+                <input
+                  className="form-control"
+                  type="file"
+                  id="formFile"
+                  onChange={(event) => {
+                    uploadFile(event);
+                  }}
+                />
               </div>
               <button
                 type="submit"

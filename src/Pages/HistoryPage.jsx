@@ -3,8 +3,9 @@ import AppBar from "../Components/AppBar";
 import FooterComponent from "../Components/FooterComponent";
 import HistoryComponent from "../Components/HistoryComponent";
 
-
 const HistoryPage = () => {
+
+
   return (
     <div>
       <AppBar />

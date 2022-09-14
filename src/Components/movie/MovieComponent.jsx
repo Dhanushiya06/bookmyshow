@@ -8,12 +8,12 @@ const MovieComponent = ({ title }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    console.log("Called");
     movieApi
       .get(`/movie/all`)
       .then((res) => {
-        console.log(res.data.data);
+        console.log(res.data.data[0]);
         if (res.data.data) {
+          console.log(res.data.data[0].file);
           setMovies(res.data.data);
         } else if (res.data.error) {
           console.log(res.data.error.message);
@@ -33,7 +33,7 @@ const MovieComponent = ({ title }) => {
           return (
             <Col xs={3} key={index}>
               <MovieItem
-                image={movie.image}
+                image={movie.file.image}
                 name={movie.movieName}
                 desc={movie.description}
                 movieId={movie.movieId}

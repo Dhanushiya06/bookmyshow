@@ -5,7 +5,7 @@ const AuthComponent = ({children}) => {
   <div className="pt-4">
     <h6>
       <span className=" text-primary px-md-2"></span>
-      SHIYAA SHOWS!!
+      <b>SHIYAA SHOWS!!</b>
     </h6>
   </div>
   <div className="mt-3 mt-md-5">
